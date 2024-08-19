@@ -1,6 +1,6 @@
 # 100 Days of Miva - API and Front-end Projects
 
-![#100daysofMiva Banner](public/banner.jpg)
+![#100daysofMiva Banner](public/20240818_225416.png)
 
 Welcome to my repository for the #100daysofMiva challenge! This repository contains a collection of 100 simple API projects developed over 100 days. The challenge is all about consistency, learning, and building resilience through daily coding.
 
