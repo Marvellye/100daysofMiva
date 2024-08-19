@@ -11,6 +11,7 @@ The #100daysofMiva challenge is designed to help developers, especially students
 ## Repository Structure
 
 This repository is organized into three main sections, each corresponding to a different programming language:
+```
 /100daysofMiva
 ├── PHP/
 │   ├── Project1/
@@ -24,6 +25,7 @@ This repository is organized into three main sections, each corresponding to a d
     ├── Project1/
     ├── Project2/
     └── ...
+```
 
 - **PHP**: Projects built using PHP, ranging from basic APIs to more complex web services.
 - **Python**: A variety of APIs created with Python, exploring different libraries and frameworks.
