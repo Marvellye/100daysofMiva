@@ -13,18 +13,16 @@ The #100daysofMiva challenge is designed to help developers, especially students
 This repository is organized into three main sections, each corresponding to a different programming language:
 ```
 /100daysofMiva
-├── PHP/
-│   ├── Project1/
-│   ├── Project2/
-│   └── ...
-├── Python/
-│   ├── Project1/
-│   ├── Project2/
-│   └── ...
-└── Nodejs/
-    ├── Project1/
-    ├── Project2/
-    └── ...
+├── README.md
+├── public/
+│   ├── banner.jpg
+│   └── (other assets)
+└── Projects/
+    ├── Day 1 | hello world API/
+    │   ├── php/
+    │   ├── nodejs/
+    │   ├── python/
+    │   └── README.md...
 ```
 
 - **PHP**: Projects built using PHP, ranging from basic APIs to more complex web services.
