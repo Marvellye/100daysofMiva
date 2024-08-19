@@ -59,17 +59,17 @@ You can join the #100daysofMiva challenge by:
 
 ## License
 
-This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This repository is licensed under the General public License. See the [LICENSE](LICENSE) file for more details.
 
 ## Connect with Me
 
 Follow my journey on:
-- [Blog](https://yourblog.com)
-- [Twitter](https://twitter.com/yourhandle)
-- [LinkedIn](https://linkedin.com/in/yourprofile)
+- [Portfolio](https://marvelly.com.ng)
+- [Twitter](https://twitter.com/marvelly_ng)
+- [LinkedIn](https://linkedin.com/in/marvellous-ezekiel-oghenemaga)
 
 Let’s code, learn, and grow together over the next 100 days!
 
 ---
 
-**Note:** Replace `path/to/your/banner.jpg` with the actual path or URL to your 4:1 banner, and update the social media links with your profiles.
+**Note:** I would love to learn front-end designs but i have a bad sense of colour and font picking. bear with me 😂😭✌🏻
