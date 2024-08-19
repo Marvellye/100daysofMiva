@@ -66,7 +66,7 @@ This repository is licensed under the General public License. See the [LICENSE](
 Follow my journey on:
 - [Portfolio](https://marvelly.com.ng)
 - [Twitter](https://twitter.com/marvelly_ng)
-- [LinkedIn](https://linkedin.com/in/marvellous-ezekiel-oghenemaga)
+- [LinkedIn](https://www.linkedin.com/in/ezekiel-marvellous-oghenemaga)
 
 Let’s code, learn, and grow together over the next 100 days!
 
