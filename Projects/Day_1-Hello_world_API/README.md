@@ -102,8 +102,8 @@ This Python script uses Flask to create a simple web server that returns a JSON 
 ```
 
 ## License
-This project is licensed under the MIT License. Feel free to use and modify the code.
+This project is licensed under the General public License. Feel free to use and modify the code.
 
 ---
 
-This `README.md` provides an overview of the project and detailed instructions on how to set up and run each "Hello World" API in PHP, Node.js, and Python.
+I'm sorry if this `README.md` does not look engaging 😂😭💔 I'm not very good at documentation. but let's see... I'll improve as the days goes by
