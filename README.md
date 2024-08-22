@@ -62,6 +62,7 @@ This repository is licensed under the General public License. See the [LICENSE](
 ## Connect with Me
 
 Follow my journey on:
+- [DevTo](https://dev.to/marvellye)
 - [Portfolio](https://marvelly.com.ng)
 - [Twitter](https://twitter.com/marvelly_ng)
 - [LinkedIn](https://www.linkedin.com/in/ezekiel-marvellous-oghenemaga)
@@ -71,3 +72,7 @@ Let’s code, learn, and grow together over the next 100 days!
 ---
 
 **Note:** I would love to learn front-end designs but i have a bad sense of colour and font picking. bear with me 😂😭✌🏻
+
+###Roadmaps
+1. Hello world API 
+2. Simple web form Create and Read
