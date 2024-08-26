@@ -159,6 +159,22 @@ const shortlinkParser = async (req, res) => {
       return res.status(404).json({ error: 'Shortlink not found' });
     }
   }
+  
+  // Handle the case where main_id is provided for link tracking
+  if (main_id) {
+    const shortlinks = loadShortlinks();
+    const foundLink = shortlinks.find(link => link.main_id === main_id);
+
+    if (foundLink) {
+      // Increment the clicks count by 1
+      //foundLink.clicks += 1;
+      //saveShortlinks(shortlinks);
+      return res.json(foundLink);
+    } else {
+      return res.status(404).json({ error: 'Shortlink not found' });
+    }
+  }
+  
 
   // If neither url nor main_id is provided, return an error message
   if (!url) {
@@ -169,10 +185,19 @@ const shortlinkParser = async (req, res) => {
     // Decode the URL to handle any URL encoding issues
     const decodedUrl = decodeURIComponent(url);
 
-    // Fetch the original page title
-    const { data } = await axios.get(decodedUrl);
-    const $ = cheerio.load(data);
-    const originalTitle = $('title').text() || 'No Title';
+    let originalTitle = 'New Shortlink'; // Default title if fetching fails
+
+    try {
+      // Attempt to fetch the original page title
+      const { data } = await axios.get(decodedUrl);
+      const $ = cheerio.load(data);
+      const fetchedTitle = $('title').text();
+      if (fetchedTitle) {
+        originalTitle = fetchedTitle;
+      }
+    } catch (fetchError) {
+      console.error('Error fetching original title:', fetchError.message);
+    }
 
     // Generate unique IDs
     const mainId = uuidv4().slice(0, 6);
