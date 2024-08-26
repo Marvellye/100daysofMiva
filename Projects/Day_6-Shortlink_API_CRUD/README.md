@@ -160,5 +160,3 @@ Here's a simple first hand API documentation for the endpoints in this Node.js a
     ```
 
 ---
-
-Feel free to customize the documentation based on your specific requirements and any additional details you want to include.
