@@ -1,3 +1,6 @@
+Hello world 👋🏻
+#100daysofMiva day 6, I worked on an API for shortening links without a database. let's talk about it
+
 ### Step-by-Step Instructions and Documentation
 
 This Node.js script creates, edits, deletes, and manages shortlinks with associated QR codes. It uses Express.js, Axios, Cheerio, and several Node.js core modules to achieve these tasks.
@@ -182,3 +185,7 @@ app.listen(3000, () => {
   ```
 
 The responses will be in JSON format, providing the relevant data or error messages.
+
+check it out here
+
+https://app.marvelly.com.ng/100daysofMiva/day-6/
