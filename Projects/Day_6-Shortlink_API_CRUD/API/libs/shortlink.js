@@ -41,6 +41,26 @@ const saveShortlinks = (shortlinks) => {
 // Generate random numbers
 const generateRandomNumber = () => Math.floor(Math.random() * 1000000);
 
+// Helper function to format dates
+const formatDate = (date) => {
+  const options = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+    timeZone: 'Africa/Lagos', // Nigerian time zone
+  };
+
+  return new Date(date)
+    .toLocaleString('en-GB', options)
+    .replace(/\//g, '-')
+    .replace(/, /g, ' ');
+};
+
+
 // Shortlink parser middleware function
 const shortlinkParser = async (req, res) => {
   const { url, title, main_id, clicks, unique_id, delete: deleteFlag, edit_title, edit_long_url, edit_main_id } = req.query;
@@ -109,7 +129,7 @@ const shortlinkParser = async (req, res) => {
       // Update other details
       updatedLink.title = edit_title || updatedLink.title;
       updatedLink.long_url = edit_long_url ? decodeURIComponent(edit_long_url) : updatedLink.long_url;
-      updatedLink.edited_at = new Date().toISOString();
+      updatedLink.edited_at = formatDate(new Date());
 
       // Generate new QR code
       const newQrFileName = `${updatedLink.unique_id}.png`;
@@ -179,7 +199,7 @@ const shortlinkParser = async (req, res) => {
       short_url: shortUrl,
       long_url: decodedUrl,
       qr_code: qrCodeUrl,
-      timestamp: new Date().toISOString(),
+      timestamp: formatDate(new Date()),
     };
     shortlinks.push(newShortlink);
     saveShortlinks(shortlinks);
