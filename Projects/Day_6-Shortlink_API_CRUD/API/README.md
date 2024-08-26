@@ -191,3 +191,6 @@ https://app.marvelly.com.ng/100daysofMiva/day-6/
 
 GitHub source code 
 https://github.com/Marvellye/100daysofMiva/Projects/Day_6-Shortlink_API_CRUD
+
+DevTo
+https://dev.to/marvellye/simple-link-shortener-api-without-database-nodejs-l2
