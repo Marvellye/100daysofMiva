@@ -12,8 +12,8 @@ Before running the script, ensure you have Node.js installed on your machine. Th
 **1.1.** **Clone the repository** or create a new directory and copy the script into it:
 
 ```bash
-git clone https://github.com/Marvellye/100daysofMiva/Projects/day-6
-cd https://github.com/Marvellye/100daysofMiva/Projects/day-6
+git clone https://github.com/Marvellye/100daysofMiva/Projects/Day_6-Shortlink_API_CRUD
+cd https://github.com/Marvellye/100daysofMiva/Projects/Day_6-Shortlink_API_CRUD
 ```
 
 **1.2.** **Install the required dependencies** using npm:
@@ -187,5 +187,7 @@ app.listen(3000, () => {
 The responses will be in JSON format, providing the relevant data or error messages.
 
 check it out here
-
 https://app.marvelly.com.ng/100daysofMiva/day-6/
+
+GitHub source code 
+https://github.com/Marvellye/100daysofMiva/Projects/Day_6-Shortlink_API_CRUD
