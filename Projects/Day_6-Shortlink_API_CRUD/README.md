@@ -1,4 +1,4 @@
-Here's a simple API documentation for the endpoints described in your Node.js application:
+Here's a simple first hand API documentation for the endpoints in this Node.js application:
 
 ---
 
