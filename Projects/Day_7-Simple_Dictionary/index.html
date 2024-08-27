@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LWMFHFNMYM"></script>
+      <script> 
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         
+         gtag('config', 'G-LWMFHFNMYM');
+      </script>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="Simple Dictionary Application" />
+      <title>Simple Dictionary Application - JavaScript</title>
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="https://app.marvelly.com.ng/">
+      <meta property="og:title" content="Dictionary - JavaScript">
+      <meta property="og:description" content="Simple Dictionary Application">
+      <meta property="og:image" content="https://app.marvelly.com.ng/100daysofMiva/100.png">
+      <link
+         href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&display=swap"
+         rel="stylesheet"
+         />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+      <script src="https://kit.fontawesome.com/c4a96fddb0.js" crossorigin="anonymous"></script>
+      <style>
+         .swal2-container.swal2-center>.swal2-popup{
+         background-color: #121212 !important;
+         }
+         .swal2-html-container, .swal2-title{
+         color: white !important;
+         }
+         #message {
+         display: none;
+         padding: 0.5rem;
+         margin-bottom: 1rem;
+         border-radius: 0.5rem;
+         background-color: #eaf4e1;
+         color: #2e7d32;
+         text-align: center;
+         }
+         @keyframes spin {
+         from {
+         transform: rotate(0deg);
+         }
+         to {
+         transform: rotate(360deg);
+         }
+         }
+         .rotating {
+         display: inline-block;
+         animation: spin 1s linear infinite;
+         }
+         ::selection{
+         color: #fff;
+         background: #4D59FB;
+         }
+         .wrapper{
+         width: 420px;
+         border-radius: 7px;
+         padding: 25px 28px 45px;
+         box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.05);
+         }
+         .wrapper header{
+         font-size: 28px;
+         font-weight: 500;
+         text-align: center;
+         }
+         .wrapper .search{
+         position: relative;
+         margin: 35px 0 18px;
+         }
+         .wrapper .info-text{
+         font-size: 13px;
+         color: #9A9A9A;
+         margin: -3px 0 -10px;
+         }
+         .wrapper.active .info-text{
+         display: none;
+         }
+         .info-text span{
+         font-weight: 500;
+         }
+         .wrapper ul{
+         height: 0;
+         opacity: 0;
+         padding-right: 1px;
+         overflow-y: hidden;
+         transition: all 0.2s ease;
+         }
+         .wrapper.active ul{
+         opacity: 1;
+         height: 303px;
+         }
+         .wrapper ul li{
+         display: flex;
+         list-style: none;
+         margin-bottom: 14px;
+         align-items: center;
+         padding-bottom: 17px;
+         border-bottom: 1px solid #D9D9D9;
+         justify-content: space-between;
+         }
+         ul li:last-child{
+         margin-bottom: 0;
+         border-bottom: 0;
+         padding-bottom: 0;
+         }
+         ul .word p{
+         font-size: 22px;
+         font-weight: 500;
+         }
+         ul .word span{
+         font-size: 12px;
+         color: #989898;
+         }
+         ul .word i{
+         color: #999;
+         font-size: 15px;
+         cursor: pointer;
+         }
+         ul .content{
+         max-height: 215px;
+         overflow-y: auto;
+         }
+         ul .content::-webkit-scrollbar{
+         width: 0px;
+         }
+         .content li .details{
+         padding-left: 10px;
+         border-radius: 4px 0 0 4px;
+         border-left: 3px solid #4D59FB;
+         }
+         .content li p{
+         font-size: 17px;
+         font-weight: 500;
+         }
+         .content li span{
+         font-size: 15px;
+         color: #7E7E7E;
+         }
+         .content .synonyms .list{
+         display: flex;
+         flex-wrap: wrap;
+         }
+         .content .synonyms span{
+         cursor: pointer;
+         margin-right: 5px;
+         text-decoration: underline;
+         }
+      </style>
+      <link href="https://app.marvelly.com.ng/cgpa/design/style.css" rel="stylesheet">
+      <script>
+         if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
+             document.querySelector('html').classList.remove('dark');
+         } else {
+             document.querySelector('html').classList.add('dark');
+         }
+         
+      </script>
+      <script defer data-domain='preview.cruip.com,rollup.cruip.com' src='https://plausible.cruip.com/js/script.js'></script>
+   </head>
+   <body class="cj90m c7e3b cisrt c7wkd c2gcs ce7fn clmvh">
+      <!-- Page wrapper -->
+      <div class="cbvui chs6j c8gx0 ckwv3 cjycj cezsk">
+         <!-- Bg coloured shapes -->
+         <div class="cwysf cs1uv cojlt c9v7h cvhgl cr8aa cetkn cag0k" aria-hidden="true">
+            <div class="c5bik c9b4s c0oy8 cmix3 cj04y ckrsz cje3v csstg cevtx cv8gl cyy6y cr8aa c98s8 c3yb8"></div>
+            <div class="cfwzm chupg c9b4s c0oy8 cmix3 cj04y ckrsz csstg c8m5q cevtx cv8gl cyy6y cr8aa cjgsx cnbs3 c3yb8"></div>
+            <div class="csla3 chupg c9b4s c0oy8 cmix3 cj04y ckrsz csstg c8m5q cevtx cv8gl cyy6y cr8aa c110f c9hsq cggi5"></div>
+            <div class="cs09d czbwe cd03c c9b4s c0oy8 cmix3 cj04y ckrsz csstg cevtx cv8gl cc2fz cyy6y cr8aa c8zmq cwoae"></div>
+            <div class="cpxaw crjok c9b4s c0oy8 cmix3 cj04y ckrsz csstg c8m5q cevtx cv8gl cpsm9 cgtcx cc1h8 cr8aa c2svq"></div>
+            <div class="c55mv cpvgd c9b4s c0oy8 cmix3 cj04y ckrsz csstg c8m5q cevtx cv8gl cc2fz cyy6y cr8aa cubdc cggi5"></div>
+         </div>
+         <!-- Vertical lines -->
+         <div class="cwysf cs1uv cojlt c9v7h cvhgl cr8aa cag0k" aria-hidden="true">
+            <!-- Left side -->
+            <div class="c9dpd c30rf crc45 c06dl cd91y czb12 c2wd7 cd8xp cpue7 cevtx ch88u cr5hf cxgoq c6ppr cjkk2 chsmj"></div>
+            <!-- Right side -->
+            <div class="c9dpd c30rf crc45 c06dl cd91y czb12 c2wd7 cd8xp cpue7 cevtx ch88u cr5hf cvq9r cxgoq cj85p c6ppr"></div>
+         </div>
+         <!-- Site header -->
+         <header class="c9v3y crbyi c7hiy cvq6c cd5ux cr8aa cligc ctdcn coe0p crj7h c2dja casec">
+            <div class="cy6zq crh5c">
+               <div class="cpthp czrhe">
+                  <div class="cvvig cba0k c04cg c45gv c5plh chwso cfctz ccjiw ckwv3 ckqfb cf0cr cezsk c2svq c02c5">
+                     <!-- Border with dots in corners -->
+                     <div class="ch4rd cetk9 couhs c53q4 cehp5 chqy8 cukhb cx8c7 cippd crgvw c2z22 cv89o cr2ij cpue7 crc6r cevtx cr5hf cxgoq cjkk2 c1qs0 ckoug cpnw7 cr8aa cag0k" aria-hidden="true"></div>
+                     <!-- Site branding -->
+                     <div class="ctuhr">
+                        <!-- Logo -->
+                        <a href="./">
+                        <img src="https://app.marvelly.com.ng/cgpa/design/Miva-favicon.png" width="32" height="32"/>
+                        </a>
+                     </div>
+                     <!-- Navigation links -->
+                     <nav class="c3927 cezsk">
+                        <ul class="chwso cxpc2 cmj1h cc7et cezsk">
+                           <li>
+                              <a class="cpvyo cv7b2 cj90m cgvn6 c2gcs ccjiw cjnro c02c5" m-nav href="./">Home</a>
+                           </li>
+                           <li>
+                              <a class="cpvyo cv7b2 cj90m cgvn6 c2gcs ccjiw cjnro c02c5" onclick="showApiInfo()">API</a>
+                           </li>
+                           <li>
+                              <a class="cpvyo cv7b2 cj90m cgvn6 c2gcs ccjiw cjnro c02c5" target="_blank" href="https://marvelly.com.ng">The Dev</a>
+                           </li>
+                        </ul>
+                     </nav>
+                     <!-- Dark / Light mode toggle -->
+                     <div class="chso3 ctuhr cezsk">
+                        <input type="checkbox" name="light-switch" id="light-switch" class="light-switch cz99u">
+                        <label class="c9yqy co456" for="light-switch">
+                           <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                              <path class="cdp5p crwfp" d="M9 0H7v2h2V0ZM14.294 3.052 12.88 1.637 11.466 3.05l1.413 1.414 1.415-1.413ZM16 7h-2v2h2V7ZM11.535 13.02l1.415 1.413 1.414-1.415-1.415-1.413-1.414 1.414ZM9 14H7v2h2v-2ZM1.566 12.948l1.414 1.415 1.415-1.413-1.414-1.415-1.415 1.413ZM2 7H0v2h2V7ZM4.465 3.12 3.05 1.707 1.636 3.12l1.415 1.414L4.465 3.12Z"></path>
+                              <path class="c7cme cksqw" d="M8 4C5.8 4 4 5.8 4 8s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4Z"></path>
+                           </svg>
+                           <span class="cz99u">Switch to light / dark version</span>
+                        </label>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </header>
+         <!-- Page content -->
+         <main class="cgnjb">
+            <section>
+               <button id="confetti" class="button"></button>
+               <div class="c5fcz cnmmr cg498 cw2nq">
+                  <div class="cy6zq crh5c">
+                     <div class="cpthp czrhe">
+                        <div class="c9pd1">
+                           <div class="c0drb cpgkc ckhko c26j7 c2wd7 cl110 cd8xp ctanz cqckm conig cc8zc c0zgo c3927 chwso clw5z ckuy9 cjewx cx8zz ckwv3 cb7i0 cj1vz cezsk">
+                              <div class="cxo8x cw1gd cmkro cbc1e cyfzq cevtx cshco cv8gl cgrfs cxcm6 cxpc2 ccjiw c1l9r ckwv3 cryv2 cc7et cf0cr c02c5">
+                                 <!-- Border with dots in corners -->
+                                 <div class="c3cy3 cpoza c4xyw cauvd cehp5 chqy8 c3ehf cks6d c8z9n crgvw c2z22 cr2ij cpue7 c8arv cevtx cr5hf cw7re cxgoq cjkk2 c1qs0 ckoug cpnw7 cr8aa cag0k" aria-hidden="true"></div>
+                                 <span class="c0cnt ce627 cyiq9 ccjbb cfatl c2gcs ckwv3">Day-7 #100daysofMiva🎉 </span>
+                              </div>
+                           </div>
+                           <h2 class="c0cnt ce627 cwr74 cfatl crlpf cbwmu c2gcs cr5d0 cvxf3 ch47f casec">Dictionary</h2>
+                           <p class="cauea cgrfs cs94t">
+                              Simple Dictionary Application
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <!-- Main content -->
+            <!-- Newsletter -->
+            <section>
+               <div class="c5fcz cg498">
+                  <div class="cy6zq crh5c">
+                     <div style="max-width: 600px" class="wrapper czrhe coe0p ckwv3">
+                        <!-- Border with dots in corners -->
+                        <div class="cr8aa clot7 cag0k ccjiw cr2ij cevtx cpue7 cjkk2 csmr0 cym3j crgvw cq4r1 cehp5 cxgoq cr5hf c1qs0 c26dl cxpxq c2z22 cfdqj chqy8 ci2tu c0cnt cvvig cba0k ck5ws c5pov" aria-hidden="true"></div>
+                        <header>English Dictionary</header>
+                        <div class="search ckwv3">
+                           <div class="cwysf cr8aa c9v7h cu4yo cezsk chwso cyi7p cud52 cis7l">
+                              <i style="display:none" class="cdyx3 fa-solid fa-spinner rotating" aria-hidden="true"></i>
+                              <i style="display:block" class="cdyx3 fa-solid fa-search" aria-hidden="true"></i>
+                           </div>
+                           <input id="edit_short_url" class="short-url coyoz coe0p cyujy cjygq cc7et" type="text" placeholder="Search a word" required spellcheck="false" aria-label="Search for a word">
+                        </div>
+                        <p class="info-text">Type any existing word and press enter to get meaning, example, synonyms, etc.</p>
+                        <ul>
+                           <li class="word">
+                              <div class="details">
+                                 <p>__</p>
+                                 <span>_ _</span>
+                              </div>
+                              <i class="fas fa-volume-up" aria-label="Play pronunciation"></i>
+                           </li>
+                           <div class="content">
+                              <li class="meaning">
+                                 <div class="details">
+                                    <p>Meaning</p>
+                                    <span>___</span>
+                                 </div>
+                              </li>
+                              <li class="example">
+                                 <div class="details">
+                                    <p>Example</p>
+                                    <span>___</span>
+                                 </div>
+                              </li>
+                              <li class="synonyms">
+                                 <div class="details">
+                                    <p>Synonyms</p>
+                                    <div class="list"></div>
+                                 </div>
+                              </li>
+                           </div>
+                        </ul>
+                     </div>
+                     <script type="text/javascript" charset="utf-8">
+                        const wrapper = document.querySelector(".wrapper"),
+                              searchInput = wrapper.querySelector("input"),
+                              volume = wrapper.querySelector(".word i"),
+                              infoText = wrapper.querySelector(".info-text"),
+                              synonyms = wrapper.querySelector(".synonyms .list"),
+                              spinner = document.querySelector('.fa-spinner'),
+                              searchIcon = document.querySelector('.fa-search');
+                        
+                        let audio;
+                        
+                        function updateUIForSearch() {
+                            wrapper.classList.remove("active");
+                            infoText.style.color = "#000";
+                            spinner.style.display = 'inline-block';
+                            searchIcon.style.display = 'none';
+                        }
+                        
+                        function resetUIAfterSearch() {
+                            spinner.style.display = 'none';
+                            searchIcon.style.display = 'inline-block';
+                        }
+                        
+                        function displayErrorMessage(word) {
+                            infoText.innerHTML = `Can't find the meaning of <span>"${word}"</span>. Please, try to search for another word.`;
+                            resetUIAfterSearch();
+                        }
+                        
+                        function displaySearchResults(result, word) {
+                            resetUIAfterSearch();
+                            if(result.title){
+                                displayErrorMessage(word);
+                                return;
+                            }
+                            
+                            wrapper.classList.add("active");
+                            let definitions = result[0].meanings[0].definitions[0],
+                                phontetics = `${result[0].meanings[0].partOfSpeech} /${result[0].phonetics[0].text}/`;
+                        
+                            document.querySelector(".word p").innerText = result[0].word;
+                            document.querySelector(".word span").innerText = phontetics;
+                            document.querySelector(".meaning span").innerText = definitions.definition;
+                            document.querySelector(".example span").innerText = definitions.example;
+                            audio = new Audio(result[0].phonetics[0].audio);
+                        
+                            if(!definitions.synonyms.length) {
+                                synonyms.parentElement.style.display = "none";
+                            } else {
+                                synonyms.parentElement.style.display = "block";
+                                synonyms.innerHTML = "";
+                                definitions.synonyms.slice(0, 5).forEach((synonym, index) => {
+                                    let tag = `<span onclick="search('${synonym}')">${synonym}${index < 4 ? ',' : ''}</span>`;
+                                    synonyms.insertAdjacentHTML("beforeend", tag);
+                                });
+                            }
+                        }
+                        
+                        function search(word){
+                            if (!word) return;
+                            updateUIForSearch();
+                            fetchApi(word);
+                        }
+                        
+                        function fetchApi(word) {
+                            // Track the search event with gtag
+                            gtag('event', 'search', {
+                              'event_category': 'Dictionary',
+                              'event_label': word,
+                              'value': 1
+                            });
+                            let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
+                            fetch(url)
+                                .then(response => response.json())
+                                .then(result => displaySearchResults(result, word))
+                                .catch(() => displayErrorMessage(word));
+                        }
+                        
+                        searchInput.addEventListener("keyup", e => {
+                            if (e.key === "Enter" && e.target.value.trim()) {
+                                search(e.target.value.trim());
+                            }
+                        });
+                        
+                        volume.addEventListener("click", () => {
+                            if (audio) {
+                                volume.style.color = "#4D59FB";
+                                audio.play();
+                                setTimeout(() => {
+                                    volume.style.color = "#999";
+                                }, 800);
+                            }
+                        });
+                        
+                        document.querySelector(".search span").addEventListener("click", () => {
+                            searchInput.value = "";
+                            searchInput.focus();
+                            wrapper.classList.remove("active");
+                            infoText.style.color = "#9A9A9A";
+                            infoText.innerHTML = "Type any existing word and press enter to get meaning, example, synonyms, etc.";
+                        });
+                     </script>
+                  </div>
+               </div>
+            </section>
+         </main>
+         <!-- Site footer -->
+         <footer class="c9v3y crbyi c7hiy cvq6c c07f0">
+            <div class="cy6zq crh5c">
+               <div class="cpthp czrhe">
+                  <div class="c9pd1 c82jv">
+                     <p class="cauea cgrfs cc7et"><a class="cb5h9 cfx8h cxpc2" onclick="showSupportInfo()">Buy Me an ice-cream</a><br/>© Link Shortener - A more meaningful API #100daysofMiva . Built by <a class="cb5h9 cfx8h cxpc2" href="https://marvelly.com.ng" target="_blank">Marvelly</a>. </p>
+                  </div>
+               </div>
+            </div>
+         </footer>
+      </div>
+      <!-- JavaScript Code -->
+      <script> 
+         // Light switcher
+         const lightSwitches = document.querySelectorAll('.light-switch');
+         if (lightSwitches.length > 0) {
+         lightSwitches.forEach((lightSwitch, i) => {
+         if (localStorage.getItem('dark-mode') === 'true') {
+           // eslint-disable-next-line no-param-reassign
+           lightSwitch.checked = true;
+         }
+         lightSwitch.addEventListener('change', () => {
+           const { checked } = lightSwitch;
+           lightSwitches.forEach((el, n) => {
+             if (n !== i) {
+               // eslint-disable-next-line no-param-reassign
+               el.checked = checked;
+             }
+           });
+           document.documentElement.classList.add('[&_*]:!transition-none');
+           if (lightSwitch.checked) {
+             document.documentElement.classList.add('dark');
+             document.querySelector('html').style.colorScheme = 'dark';
+             localStorage.setItem('dark-mode', true);
+             document.dispatchEvent(new CustomEvent('darkMode', { detail: { mode: 'on' } }));
+           } else {
+             document.documentElement.classList.remove('dark');
+             document.querySelector('html').style.colorScheme = 'light';
+             localStorage.setItem('dark-mode', false);
+             document.dispatchEvent(new CustomEvent('darkMode', { detail: { mode: 'off' } }));
+           }
+           setTimeout(() => {
+             document.documentElement.classList.remove('[&_*]:!transition-none');
+           }, 1);
+         });
+         });
+         }
+      </script>
+      <script src="https://app.marvelly.com.ng/cgpa/design/alpinejs.min.js" defer=""></script>
+      <script>
+         function showApiInfo() {
+             Swal.fire({
+                 title: "Already looking for a rest Api?",
+                 text: "Calm down. i'm a solo dev... i have a life you know😂🌚",
+                 icon: "info",
+                 showCancelButton: true,
+                 confirmButtonColor: "#3085d6",
+                 cancelButtonColor: "#d33",
+                 confirmButtonText: "Okay",
+                 cancelButtonText: "Close"
+             });
+         }
+         function showSupportInfo() {
+             Swal.fire({
+                 title: "An ice-cream would be nice right?🥲🤲🏻",
+                 text: "KUDA MFB - 2063070682",
+                 icon: "info",
+                 showCancelButton: true,
+                 confirmButtonColor: "#3085d6",
+                 cancelButtonColor: "#d33",
+                 confirmButtonText: "Copy",
+                 cancelButtonText: "Cancel"
+             }).then((result) => {
+                 if (result.isConfirmed) {
+                     copyToClipboard();
+                     Swal.fire({
+                         icon: "success",
+                         title: "Copied!",
+                         text: "The account number has been copied to your clipboard.",
+                     });
+                 }
+             });
+         }
+         
+         function copyToClipboard() {
+             const number = "2063070682";
+             navigator.clipboard.writeText(number);
+         }
+      </script>
+   </body>
+</html>
