@@ -1,6 +1,7 @@
 Day 8 of #100daysofMiva coding challenge and I worked on a simple translator model that translates a language to another 😂 
 It's JS, it's magic✨🥲
 
+
 # 🌍 Language Translator Script Documentation
 
 ## Overview
@@ -182,6 +183,9 @@ Enjoy playing with different languages and make your translation journey fun and
 
 Check it out here 
 https://app.marvelly.com.ng/100daysofMiva/day-8/
+
+Documentation 
+https://dev.to/marvellye/simple-language-translator-with-api-3bd7
 
 Source code 
 https://github.com/Marvellye/100daysofMiva/blob/main/Projects%2FDay_8-Simple_language_translator
